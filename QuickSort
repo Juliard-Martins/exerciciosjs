@@ -1,0 +1,43 @@
+function quickSort(arr, pivotChoice = 'first') {
+    if (arr.length <= 1) return arr;
+
+    const pivotIndex = getPivotIndex(arr, pivotChoice);
+    const pivot = arr[pivotIndex];
+    [arr[pivotIndex], arr[arr.length - 1]] = [arr[arr.length - 1], arr[pivotIndex]]; // Move pivot to the end
+
+    const [left, right] = partition(arr, pivot);
+    return [...quickSort(left, pivotChoice), pivot, ...quickSort(right, pivotChoice)];
+}
+
+function partition(arr, pivot) {
+    let left = [];
+    let right = [];
+    for (let i = 0; i < arr.length - 1; i++) {
+        if (arr[i] < pivot) left.push(arr[i]);
+        else right.push(arr[i]);
+    }
+    return [left, right];
+}
+
+function getPivotIndex(arr, pivotChoice) {
+    if (pivotChoice === 'first') {
+        return 0;
+    } else if (pivotChoice === 'last') {
+        return arr.length - 1;
+    } else if (pivotChoice === 'middle') {
+        return Math.floor(arr.length / 2);
+    }
+    return 0; // Default to first element
+}
+
+const arr1 = [34, 7, 23, 32, 5, 62];
+console.log("First Pivot:", quickSort([...arr1], 'first'));
+console.log("Last Pivot:", quickSort([...arr1], 'last'));
+console.log("Middle Pivot:", quickSort([...arr1], 'middle'));
+
+
+// 1. Lista Desordenada:
+Para listas completamente desordenadas, o Quick Sort tende a performar bem com o critério de escolha de pivô mais eficiente, que é o pivô do meio. O pivô inicial ou pivô final podem levar a uma partição desequilibrada, resultando em uma complexidade  no pior caso.
+
+2. Lista Quase Ordenada:
+Em listas quase ordenadas, escolher o primeiro ou último elemento como pivô pode degradar o desempenho, pois as partições podem ser muito desequilibradas. O pivô do meio ainda será mais eficiente, mas se a lista já estiver quase ordenada, até a escolha do primeiro ou último elemento pode funcionar razoavelmente bem, mas não será tão eficiente quanto o pivô do meio.
