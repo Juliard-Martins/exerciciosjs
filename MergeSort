@@ -25,3 +25,33 @@ function merge(left, right) {
 
 const numbers = [38, 27, 43, 3, 9, 82, 10];
 console.log(mergeSort(numbers)); // Saída: [3, 9, 10, 27, 38, 43, 82]
+
+///////// EM STRINGS
+
+function mergeSortStrings(arr) {
+    if (arr.length <= 1) return arr;
+
+    const mid = Math.floor(arr.length / 2);
+    const left = mergeSortStrings(arr.slice(0, mid));
+    const right = mergeSortStrings(arr.slice(mid));
+
+    return mergeStrings(left, right);
+}
+
+function mergeStrings(left, right) {
+    let result = [];
+    let i = 0, j = 0;
+
+    while (i < left.length && j < right.length) {
+        if (left[i].localeCompare(right[j]) < 0) {
+            result.push(left[i++]);
+        } else {
+            result.push(right[j++]);
+        }
+    }
+
+    return result.concat(left.slice(i)).concat(right.slice(j));
+}
+
+const strings = ["banana", "apple", "grape", "cherry", "orange"];
+console.log(mergeSortStrings(strings)); // Saída: ['apple', 'banana', 'cherry', 'grape', 'orange']
