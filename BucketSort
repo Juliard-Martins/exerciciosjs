@@ -16,3 +16,25 @@ function bucketSortFloats(arr) {
 
 const floats = [0.42, 0.32, 0.23, 0.52, 0.25, 0.47, 0.34];
 console.log(bucketSortFloats(floats));
+
+//////////// ADAPTE
+
+function bucketSortIntegers(arr) {
+    const max = Math.max(...arr);
+    const n = arr.length;
+    const buckets = Array.from({ length: n }, () => []);
+
+    for (let i = 0; i < n; i++) {
+        const index = Math.floor((arr[i] / max) * (n - 1));
+        buckets[index].push(arr[i]);
+    }
+
+    for (let i = 0; i < n; i++) {
+        buckets[i].sort((a, b) => a - b);
+    }
+
+    return buckets.flat();
+}
+
+const integers = [42, 32, 23, 52, 25, 47, 34, 60, 90];
+console.log(bucketSortIntegers(integers));
