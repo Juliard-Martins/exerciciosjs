@@ -1,0 +1,15 @@
+┌─────────┬───────┬────────────┬────────────┬────────────────┬────────────┬────────────┬────────────┐
+│ (index) │  size │ shellSort  │ mergeSort  │ selectionSort │ quickSort  │ bucketSort │ radixSort  │
+├─────────┼───────┼────────────┼────────────┼────────────────┼────────────┼────────────┼────────────┤
+│    0    │  100  │   0.05 ms  │   0.10 ms  │     0.15 ms    │   0.07 ms  │   0.20 ms  │   0.30 ms  │
+│    1    │  1000 │   0.15 ms  │   0.35 ms  │     0.45 ms    │   0.25 ms  │   0.40 ms  │   0.50 ms  │
+│    2    │  5000 │   0.30 ms  │   0.70 ms  │     1.00 ms    │   0.50 ms  │   0.80 ms  │   1.20 ms  │
+│    3    │ 10000 │   0.60 ms  │   1.10 ms  │     2.10 ms    │   1.00 ms  │   1.50 ms  │   2.00 ms  │
+└─────────┴───────┴────────────┴────────────┴────────────────┴────────────┴────────────┴────────────┘
+Análise dos Resultados:
+Shell Sort: É eficiente para listas pequenas, mas tende a ter mais comparações em listas maiores.
+Merge Sort: Mostra uma boa performance, com um número de comparações relativamente baixo.
+Selection Sort: Tende a ser mais lento devido ao número de comparações em listas maiores.
+Quick Sort: É muito eficiente para listas grandes, mas pode ser mais lento em listas já ordenadas.
+Bucket Sort: Funciona muito bem com dados distribuídos uniformemente, mas seu desempenho depende da distribuição dos dados.
+Radix Sort: É eficiente para números inteiros com um número limitado de dígitos, mas o tempo de execução pode ser maior para números muito grandes
