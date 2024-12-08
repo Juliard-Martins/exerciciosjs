@@ -1,0 +1,46 @@
+function radixSort(arr) {
+    const maxNum = Math.max(...arr);
+    let digitPlace = 1;
+
+    while (Math.floor(maxNum / digitPlace) > 0) {
+        arr = countingSortByDigit(arr, digitPlace);
+        digitPlace *= 10;
+    }
+
+    return arr;
+}
+
+function countingSortByDigit(arr, digitPlace) {
+    const output = Array(arr.length).fill(0);
+    const count = Array(10).fill(0);
+
+    for (let i = 0; i < arr.length; i++) {
+        const digit = Math.floor(arr[i] / digitPlace) % 10;
+        count[digit]++;
+    }
+
+    for (let i = 1; i < 10; i++) {
+        count[i] += count[i - 1];
+    }
+
+    for (let i = arr.length - 1; i >= 0; i--) {
+        const digit = Math.floor(arr[i] / digitPlace) % 10;
+        output[--count[digit]] = arr[i];
+    }
+
+    return output;
+}
+
+const numbers = [170, 45, 75, 90, 802, 24, 2, 66];
+console.log(radixSort(numbers)); // Saída: [2, 24, 45, 66, 75, 90, 170, 802]
+
+
+// Explicação do Algoritmo
+Base Decimal (Base 10):
+
+O Radix Sort processa cada número dígito por dígito, da menor casa decimal (unidade) à maior (dezena, centena, etc.).
+Para cada dígito, ele usa o Counting Sort como sub-rotina para organizar os números com base nesse dígito.
+Base Binária (Base 2):
+
+Para trabalhar na base binária, os dígitos são processados como bits (0 ou 1).
+O princípio é o mesmo: organizar os números primeiro pelo bit menos significativo (LSB), depois pelo próximo, até o bit mais significativo (MSB).
