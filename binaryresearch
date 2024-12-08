@@ -1,0 +1,25 @@
+function binarySearch(arr, target) {
+    let left = 0;
+    let right = arr.length - 1;
+
+    while (left <= right) {
+        const mid = Math.floor((left + right) / 2);
+
+        if (arr[mid] === target) {
+            return mid; // Elemento encontrado
+        } else if (arr[mid] < target) {
+            left = mid + 1; // Ignora a metade esquerda
+        } else {
+            right = mid - 1; // Ignora a metade direita
+        }
+    }
+
+    return -1; // Elemento não encontrado
+}
+
+// Exemplo de uso:
+const arr = [2, 4, 6, 8, 10, 12, 14];
+const target = 10;
+
+const result = binarySearch(arr, target);
+console.log(result); // Saída: 4
