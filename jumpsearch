@@ -1,0 +1,48 @@
+function jumpSearch(arr, target) {
+    const n = arr.length;
+    const step = Math.floor(Math.sqrt(n));
+    let prev = 0;
+
+    while (arr[Math.min(step, n) - 1] < target) {
+        prev = step;
+        if (prev >= n) return -1;
+        step += Math.floor(Math.sqrt(n));
+    }
+
+    while (arr[prev] < target) {
+        prev++;
+        if (prev === Math.min(step, n)) return -1;
+    }
+
+    return arr[prev] === target ? prev : -1;
+}
+
+function binarySearch(arr, target) {
+    let left = 0;
+    let right = arr.length - 1;
+
+    while (left <= right) {
+        const mid = Math.floor((left + right) / 2);
+
+        if (arr[mid] === target) return mid;
+        else if (arr[mid] < target) left = mid + 1;
+        else right = mid - 1;
+    }
+
+    return -1;
+}
+
+function measureExecutionTime(func, arr, target) {
+    const start = performance.now();
+    func(arr, target);
+    return performance.now() - start;
+}
+
+const arr = Array.from({ length: 1000000 }, (_, i) => i + 1);
+const target = 999999;
+
+const jumpTime = measureExecutionTime(jumpSearch, arr, target);
+const binaryTime = measureExecutionTime(binarySearch, arr, target);
+
+console.log(`Jump Search Time: ${jumpTime.toFixed(4)}ms`);
+console.log(`Binary Search Time: ${binaryTime.toFixed(4)}ms`);
