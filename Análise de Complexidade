@@ -1,0 +1,39 @@
+Algoritmos de Ordenação:
+1. Shell Sort
+Tempo de Execução:
+Melhor caso: Se uma boa sequência de intervalos for usada, o algoritmo pode ser muito eficiente, com uma complexidade próxima da logarítmica.
+Pior caso: Se os intervalos escolhidos não forem eficazes, o algoritmo pode ter um desempenho ruim, próximo ao de um algoritmo quadrático.
+Caso médio: O algoritmo tende a ser mais rápido que o Selection Sort e Insertion Sort em listas grandes, mas o desempenho depende da sequência de intervalos.
+Espaço de Execução:
+O algoritmo utiliza espaço constante, pois é um algoritmo in-place, ou seja, não requer memória extra significativa.
+2. Merge Sort
+Tempo de Execução:
+O algoritmo sempre realiza o mesmo número de operações, independentemente de a lista estar ordenada ou não. Isso resulta em uma complexidade estável, sendo muito eficiente para listas grandes.
+Espaço de Execução:
+O algoritmo requer espaço extra para armazenar temporariamente as sublistas durante o processo de fusão.
+3. Selection Sort
+Tempo de Execução:
+O algoritmo realiza o mesmo número de comparações, independentemente da situação da lista (ordenada ou não), o que o torna ineficiente para listas grandes.
+Em todas as situações, o tempo de execução é quadrático.
+Espaço de Execução:
+O algoritmo usa espaço constante, pois é um algoritmo in-place.
+4. Quick Sort
+Tempo de Execução:
+Melhor caso: O algoritmo tem um desempenho excelente quando o pivô divide bem a lista.
+Pior caso: Se o pivô é escolhido de maneira ruim (como sempre escolher o maior ou menor elemento), o algoritmo pode ter um desempenho muito ruim.
+Caso médio: Em média, o algoritmo divide a lista de forma eficiente e tem um bom desempenho.
+Espaço de Execução:
+O algoritmo usa uma quantidade razoável de memória, pois faz chamadas recursivas durante o processo.
+5. Bucket Sort
+Tempo de Execução:
+Melhor caso: O algoritmo é muito eficiente quando os dados estão bem distribuídos entre os baldes e os baldes são ordenados com um algoritmo eficiente.
+Pior caso: Se os dados não estão bem distribuídos, o desempenho pode ser ruim, pois pode ser necessário ordenar os baldes de forma ineficiente.
+Caso médio: O algoritmo tem um desempenho bom quando os dados são razoavelmente bem distribuídos.
+Espaço de Execução:
+O algoritmo requer espaço extra proporcional ao número de baldes que precisa usar para ordenar os dados.
+6. Radix Sort
+Tempo de Execução:
+O algoritmo é eficiente para ordenar números inteiros, especialmente quando o número de dígitos é pequeno.
+Ele pode ter desempenho ruim se o número de dígitos for grande, pois realiza uma série de passes sobre os dados.
+Espaço de Execução:
+O algoritmo exige uma quantidade significativa de espaço extra para armazenar as listas temporárias durante a ordenação.
