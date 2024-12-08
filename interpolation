@@ -24,4 +24,15 @@ function interpolationSearch(arr, target) {
     return -1; 
 }
 
+//////////
+Lista com Intervalos Uniformes
+const arrUniform = [10, 20, 30, 40, 50, 60, 70];
+const targetUniform = 50;
+console.log(interpolationSearch(arrUniform, targetUniform)); // Saída: 4
+
+Lista com Intervalos Não Uniformes
+const arrNonUniform = [5, 10, 30, 60, 120, 250, 500];
+const targetNonUniform = 60;
+console.log(interpolationSearch(arrNonUniform, targetNonUniform)); // Saída: 3
+
 
