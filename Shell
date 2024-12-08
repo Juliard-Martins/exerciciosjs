@@ -40,3 +40,18 @@ function getGapSequence(type, n) {
     }
     return gaps;
 }
+
+
+// Como a sequência de intervalos afeta a eficiência
+Shell (Divisão por 2):
+
+Sequência: ⌊𝑛/2⌋,⌊𝑛/4⌋,…,1⌊n/2⌋,⌊n/4⌋,…,1
+Simples de implementar, mas não é a mais eficiente. Para grandes listas, pode resultar em mais comparações e movimentações de elementos.
+Knuth:
+Sequência: 1,4,13,40,…
+1,4,13,40,… (ℎ=3ℎ+1h=3h+1)
+Uma das sequências mais equilibradas para a maioria dos casos. Garante uma boa distribuição dos elementos.
+Hibbard:
+Sequência: 1,3,7,15,31,…
+1,3,7,15,31,… (2𝑘−12 k −1)
+Tem desempenho melhor que a sequência de Shell na maioria dos casos, especialmente para listas parcialmente ordenadas.
