@@ -1,0 +1,79 @@
+// Função para implementar o Bucket Sort
+function bucketSort(arr) {
+    let n = arr.length;
+    if (n <= 1) return arr;
+
+    // Determina o número de baldes
+    let buckets = Array.from({ length: 10 }, () => []);
+
+    // Distribui as notas nos baldes
+    for (let i = 0; i < n; i++) {
+        let bucketIndex = Math.floor(arr[i] / 10);
+        buckets[bucketIndex].push(arr[i]);
+    }
+
+    // Ordena cada balde e concatena-os
+    for (let i = 0; i < 10; i++) {
+        buckets[i].sort((a, b) => a - b); // Ordenação padrão
+    }
+
+    // Combina os baldes
+    return buckets.flat();
+}
+
+// Função para implementar o Interpolation Search
+function interpolationSearch(arr, target) {
+    let low = 0;
+    let high = arr.length - 1;
+
+    while (low <= high && target >= arr[low] && target <= arr[high]) {
+        // Calcula a posição de estimativa
+        let pos = low + Math.floor(((target - arr[low]) / (arr[high] - arr[low])) * (high - low));
+
+        // Verifica se encontrou o valor
+        if (arr[pos] === target) {
+            return pos;
+        }
+
+        if (arr[pos] < target) {
+            low = pos + 1;
+        } else {
+            high = pos - 1;
+        }
+    }
+
+    return -1; // Caso não encontre
+}
+
+// Lista de alunos com suas respectivas notas
+let students = [
+    { name: 'Alice', grade: 85 },
+    { name: 'Bob', grade: 92 },
+    { name: 'Charlie', grade: 78 },
+    { name: 'David', grade: 88 },
+    { name: 'Eva', grade: 67 },
+    { name: 'Frank', grade: 91 },
+    { name: 'Grace', grade: 72 },
+    { name: 'Hannah', grade: 96 },
+    { name: 'Igor', grade: 75 },
+    { name: 'John', grade: 80 }
+];
+
+// Extrair as notas dos alunos
+let grades = students.map(student => student.grade);
+
+// Ordenar as notas com o Bucket Sort
+let sortedGrades = bucketSort(grades);
+console.log('Notas ordenadas:', sortedGrades);
+
+// Procurar um aluno com uma nota específica usando Interpolation Search
+let targetGrade = 88;
+let index = interpolationSearch(sortedGrades, targetGrade);
+
+// Encontrar o aluno correspondente à nota
+if (index !== -1) {
+    let student = students.find(s => s.grade === sortedGrades[index]);
+    console.log(`Aluno com nota ${targetGrade}: ${student.name}`);
+} else {
+    console.log(`Nota ${targetGrade} não encontrada.`);
+}
