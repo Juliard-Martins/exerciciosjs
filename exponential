@@ -27,3 +27,10 @@ const targetLarge = 999999;
 
 console.log(exponentialSearch(arrSmall, targetSmall)); // Índice: 2
 console.log(exponentialSearch(arrLarge, targetLarge)); // Índice: 999998
+
+
+//////
+Como o Exponential Search Funciona
+Primeira Etapa: Usa um conceito similar ao Jump Search para determinar uma faixa onde o elemento pode estar. Ele aumenta exponencialmente o índice de busca 1,2,4,8,…
+1,2,4,8,…, até que o valor do elemento no índice seja maior ou igual ao alvo.
+Segunda Etapa: Aplica o Binary Search na faixa encontrada, que é sempre reduzida pela primeira etapa.
